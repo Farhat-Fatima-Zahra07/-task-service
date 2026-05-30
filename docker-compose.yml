@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  task-service:
+    build: .
+    container_name: task-service
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:tododb
+      SPRING_H2_CONSOLE_ENABLED: "true"
+    restart: unless-stopped

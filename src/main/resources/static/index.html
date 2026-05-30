@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- AUTH PAGE -->
+<div id="authPage" class="auth-page">
+    <div class="auth-card">
+        <div class="auth-logo">
+            <div class="logo-icon">✓</div>
+            <h1>TaskFlow</h1>
+            <p>ISI S6 — Ingénierie Logicielle Avancée</p>
+        </div>
+        <div class="auth-tabs">
+            <button class="tab active" onclick="switchTab('login', this)">Connexion</button>
+            <button class="tab" onclick="switchTab('register', this)">Inscription</button>
+        </div>
+
+        <div id="loginForm">
+            <div class="form-group">
+                <label>Nom d'utilisateur</label>
+                <input type="text" id="loginUsername" placeholder="votre_pseudo" />
+            </div>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" id="loginPassword" placeholder="••••••••" />
+            </div>
+            <div id="loginError" class="error-msg"></div>
+            <button class="btn-primary" onclick="login()">Se connecter</button>
+        </div>
+
+        <div id="registerForm" class="hidden">
+            <div class="form-group">
+                <label>Nom d'utilisateur</label>
+                <input type="text" id="regUsername" placeholder="votre_pseudo" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="regEmail" placeholder="email@exemple.com" />
+            </div>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" id="regPassword" placeholder="••••••••" />
+            </div>
+            <div id="registerError" class="error-msg"></div>
+            <button class="btn-primary" onclick="register()">S'inscrire</button>
+        </div>
+    </div>
+</div>
+
+<!-- APP PAGE -->
+<div id="appPage" class="app-page hidden">
+    <header class="header">
+        <div class="header-left">
+            <div class="logo-icon small">✓</div>
+            <h2>TaskFlow</h2>
+        </div>
+        <div class="header-right">
+            <span id="welcomeUser"></span>
+            <button class="btn-logout" onclick="logout()">Déconnexion</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="stats-bar">
+            <div class="stat-card"><span class="stat-number" id="statTotal">0</span><span class="stat-label">Total</span></div>
+            <div class="stat-card todo"><span class="stat-number" id="statTodo">0</span><span class="stat-label">À faire</span></div>
+            <div class="stat-card progress"><span class="stat-number" id="statProgress">0</span><span class="stat-label">En cours</span></div>
+            <div class="stat-card done"><span class="stat-number" id="statDone">0</span><span class="stat-label">Terminées</span></div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Rechercher..." oninput="searchTasks()" />
+            </div>
+            <div class="filters">
+                <select id="filterBy" onchange="applyFilter()">
+                    <option value="">Toutes</option>
+                    <option value="status_TODO">À faire</option>
+                    <option value="status_IN_PROGRESS">En cours</option>
+                    <option value="status_DONE">Terminées</option>
+                    <option value="priority_HIGH">Priorité haute</option>
+                    <option value="priority_MEDIUM">Priorité moyenne</option>
+                    <option value="priority_LOW">Priorité basse</option>
+                </select>
+                <button class="btn-add" onclick="openModal()">+ Nouvelle tâche</button>
+            </div>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+    </main>
+</div>
+
+<!-- MODAL -->
+<div id="taskModal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-card">
+        <div class="modal-header">
+            <h3 id="modalTitle">Nouvelle tâche</h3>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="form-group">
+            <label>Titre *</label>
+            <input type="text" id="taskTitle" placeholder="Titre de la tâche" />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea id="taskDesc" rows="3" placeholder="Description (optionnel)"></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Statut</label>
+                <select id="taskStatus">
+                    <option value="TODO">À faire</option>
+                    <option value="IN_PROGRESS">En cours</option>
+                    <option value="DONE">Terminé</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Priorité</label>
+                <select id="taskPriority">
+                    <option value="LOW">Basse</option>
+                    <option value="MEDIUM" selected>Moyenne</option>
+                    <option value="HIGH">Haute</option>
+                </select>
+            </div>
+        </div>
+        <div id="modalError" class="error-msg"></div>
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeModal()">Annuler</button>
+            <button class="btn-primary" onclick="saveTask()">Enregistrer</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
