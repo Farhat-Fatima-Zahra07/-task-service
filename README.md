@@ -30,7 +30,7 @@ Une application web pour gérer ses tâches :
 
 **Dans IntelliJ :**
 1. Ouvrir `TaskServiceApplication.java`
-2. Cliquer ▶
+2. Cliquer 
 3. Aller sur `http://localhost:8090`
 
 **Avec Docker :**
