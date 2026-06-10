@@ -3,7 +3,7 @@
 **Auteurs :** Farhat Fatima Zahra & Elfahli Khadija
 **Module :** Ingénierie Logicielle Avancée — ISI_S6
 
----
+
 
 ## C'est quoi ?
 
@@ -18,7 +18,7 @@ Fonctionnalités :
 * Filtrer les tâches
 * Afficher les tâches urgentes
 
----
+
 
 ## Technologies utilisées
 
@@ -30,7 +30,7 @@ Fonctionnalités :
 * Docker
 * GitHub Actions
 
----
+
 
 ## Comment lancer le projet
 
@@ -56,7 +56,7 @@ docker-compose up --build
 mvn test
 ```
 
----
+
 
 ## Design Patterns utilisés
 
@@ -70,7 +70,7 @@ mvn test
 * Ajout de badges de priorité
 * Ajout de notifications pour les tâches urgentes
 
----
+
 
 ## Tests et CI/CD
 
@@ -79,7 +79,7 @@ mvn test
 * Pipeline GitHub Actions opérationnelle
 * Construction automatique du JAR et de l'image Docker
 
----
+
 
 ## Pages disponibles
 
@@ -88,7 +88,7 @@ mvn test
 | http://localhost:8090            | Application        |
 | http://localhost:8090/h2-console | Base de données H2 |
 
----
+
 
 ## Endpoints principaux
 
@@ -102,7 +102,7 @@ mvn test
 | DELETE  | /api/tasks/{id}            | Supprimer une tâche |
 | GET     | /api/tasks/urgent?userId=1 | Tâches urgentes     |
 
----
+
 
 ## Résultat
 
